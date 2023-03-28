@@ -37,19 +37,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id = 0)
+    public function show($id)
     {
-        $user_info = $id ? User::find($id) : Auth::user();
 
-        if ($user_info) {
-            return response()->json([
-                'user_info' => $user_info,
-            ], 200);
-        }
-
-        return response()->json([
-            'user_info' => $user_info,
-        ], 400);
     }
 
     /**
@@ -61,11 +51,7 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        $data = $request->validated();
-        $user = User::find($id)->update($data);
-        return response()->json([
-            'user_info' => $user,
-        ], 200);
+
     }
 
     /**
