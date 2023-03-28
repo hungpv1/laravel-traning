@@ -24,5 +24,6 @@ Route::prefix('auth')->group(function () {
 Route::middleware('auth:api')->prefix('v1')->group(function () {
     Route::get('user/current', [UserController::class, 'getCurrentUser']);
     Route::put('user/current', [UserController::class, 'updateCurrentUser']);
+    Route::put('user/currentSocial', [UserController::class, 'updateCurrentUserSocial']);
     Route::apiResource('user', UserController::class);
 });

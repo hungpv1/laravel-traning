@@ -81,4 +81,14 @@ class UserController extends Controller
             'user_info' => $user,
         ], 200);
     }
+
+    public function updateCurrentUserSocial(Request $request)
+    {
+        $data = $request->all();
+        $id = Auth::user()->id;
+        $user = User::find($id)->update(['social_info' => json_encode($data)]);
+        return response()->json([
+            'user_info' => $user,
+        ], 200);
+    }
 }
